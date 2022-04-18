@@ -1,0 +1,45 @@
+﻿@page
+@model ST1_ASPNETCore.Pages.Stocks.IndexModel
+
+@{
+    ViewData["Title"] = "Stock";
+}
+
+<h1>Stock</h1>
+<h3>Sucursal Nº 1 LOS ALAMOS</h3>
+<h4>Stock del 20/03/2022</h4>
+
+<table class="blueTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Stock_Web[0].Producto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stock_Web[0].Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stock_Web[0].Kilos)
+            </th>
+            <th></th>
+        </tr>
+    </thead>    
+    <tbody>
+@foreach (var item in Model.Stock_Web) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Producto)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-prod="@item.Producto">@Html.DisplayFor(modelItem => item.Descripcion)</a>
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-prod="@item.Producto">@Html.DisplayFor(modelItem => item.Kilos)</a>
+            </td>
+            <td>
+                <a asp-page="./Delete" asp-route-id="@item.ID">Borrar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
